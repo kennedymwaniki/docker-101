@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - PORT=${PORT:-8888}
+    ports:
+      - "${PORT:-8888}:${PORT:-8888}"
+    volumes:
+      - ./src:/app/src
+      - /app/node_modules
+    environment:
+      - PORT=${PORT:-8888}
+    # Development mode configuration
+    develop:
+      watch:
+        - path: ./src
+          target: /app/src
+          action: sync

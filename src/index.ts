@@ -1,10 +1,11 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 
 const app = new Hono();
-
+app.use(cors());
 app.get("/", (c) => {
-  return c.text("Hello Hono! and docker and kennedy");
+  return c.text("Hello Hono! and docker and kennedy mwangi mwaniki");
 });
 
 const port = Number(process.env.PORT || 3000);
